@@ -117,7 +117,7 @@ def sort_data(save_img=True):
                 # Rescale boxes from img_size to im0 size
                 det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0.shape).round()
                 # Write results
-                for _, conf, cls in reversed(det):
+                for *xyxy, conf, cls in reversed(det):
 
                     if save_img or view_img:
                         label = f"{names[int(cls)]} {conf:.2f}"
